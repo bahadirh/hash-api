@@ -2,4 +2,4 @@ const crypto = require('crypto-js')
 
 const {controllerFactory} = require('../utils')
 
-module.exports.md5 = controllerFactory(crypto.HmacMD5, crypto.MD5)
+module.exports.sha1 = controllerFactory(crypto.HmacSHA1, crypto.SHA1)
