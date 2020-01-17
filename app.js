@@ -29,6 +29,4 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, function() {
-  console.log('Server listening on port ' + PORT)
-})
+app.listen(PORT)
