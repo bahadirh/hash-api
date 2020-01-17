@@ -1,6 +1,6 @@
 const express = require('express')
 const formidable = require('express-formidable')
-const md5 = require('react-native-md5')
+const crypto = require('crypto-js')
 
 const app = express()
 
@@ -10,9 +10,9 @@ app.post('/md5', (req, res, next) => {
   try {
     let hash
     if (req.fields.key) {
-      hash = md5.hex_hmac_md5(req.fields.key, req.fields.data)
+      hash = crypto.HmacMD5(req.fields.data, req.fields.key).toString(crypto.enc.Hex)
     } else {
-      hash = md5.hex_md5(req.fields.data)
+      hash = crypto.MD5(req.fields.data).toString(crypto.enc.Hex)
     }
     return res.json({
       status: 'success',
