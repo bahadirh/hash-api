@@ -1,10 +1,10 @@
 const router = require('express').Router()
 
-const md5Router = require('./md5')
-const sha1Router = require('./sha1')
+const controllers = require('../controllers')
 
-router.use('/md5', md5Router)
-router.use('/sha1', sha1Router)
+Object.keys(controllers).forEach(handler =>
+  router.use(`/${handler}`, controllers[handler])
+)
 
 // 404 Not Found response
 router.use((req, res, next) => {
