@@ -8,9 +8,11 @@ module.exports.controllerFactory = (
   try {
     let hash
     if (req.fields.key) {
-      hash = hmacFn(req.fields.data, req.fields.key).toString(format)
+      hash = hmacFn(String(req.fields.data), String(req.fields.key)).toString(
+        format
+      )
     } else {
-      hash = hashFn(req.fields.data).toString(format)
+      hash = hashFn(String(req.fields.data)).toString(format)
     }
     return res.json({
       status: 'success',
