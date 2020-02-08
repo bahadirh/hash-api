@@ -19,6 +19,6 @@ module.exports.controllerFactory = (
       data: {key: req.fields.key, data: req.fields.data, hash}
     })
   } catch (error) {
-    return res.sendStatus(400)
+    return res.status(400).json({status: 'error', data: error.message})
   }
 }
