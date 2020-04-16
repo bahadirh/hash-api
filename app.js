@@ -1,10 +1,12 @@
 const express = require('express')
 const formidable = require('express-formidable')
+const cors = require('cors')
 
 const routes = require('./routes')
 
 const app = express()
 
+app.use(cors({credentials: true, origin: true}))
 app.use(formidable())
 
 app.use('/', routes)
